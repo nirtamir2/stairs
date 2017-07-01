@@ -17,6 +17,14 @@
         };
         firebase.initializeApp(config);
     </script>
+    <script>
+        var db = firebase.database();
+        var ref = db.ref("/enter");
+        ref.once("value", function (snapshot) {
+            document.getElementById('database').innerHTML = snapshot.val();
+            console.log(snapshot.val());
+        });
+    </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -32,6 +40,10 @@
     </div>
     <div class="mdl-card__supporting-text">
         Please take the stairs instead of the elevator and scan the QR code with your phone
+        <p id="database"></p>
+    </div>
+    <div class="mdl-card__supporting-text">
+
     </div>
     <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
