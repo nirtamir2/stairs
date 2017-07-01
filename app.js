@@ -48,5 +48,5 @@ app.get('/floor/:floorNumber', function (req, res) {
 
     res.send(ip);
 });
-
-app.listen(808)
+var port = process.env.PORT || 8080;
+app.listen(port)
