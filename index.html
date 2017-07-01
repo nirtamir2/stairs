@@ -21,8 +21,15 @@
         var db = firebase.database();
         var ref = db.ref("/enter");
         ref.once("value", function (snapshot) {
-            document.getElementById('database').innerHTML = snapshot.val();
-            console.log(snapshot.val());
+            var value = snapshot.val()
+            for (row in value) {
+                document.getElementById('database').innerHTML += '<p>';
+                for (key in value[row]) {
+                    document.getElementById('database').innerHTML += key + ': ' + value[row][key] + ' ';
+                }
+                document.getElementById('database').innerHTML += '</p>';
+            }
+            console.log(value);
         });
     </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
